@@ -8,11 +8,10 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-    <div class="flex justify-center items-center h-screen  font-sans text-xl font-semibold">
+    <div class="flex mt-6 justify-center  font-serif text-blue-600 text-3xl font-semibold">
             <h1>Add a Book</h1>
     </div>
-        
-    <div class="flex justify-center space-y-4 ">
+    
         @if($errors->any()) <!--if there is any error-->
             <div class="alert alert-danger">
                 <ul>
@@ -22,33 +21,34 @@
                 </ul>
             </div>
         @endif
+    <div class="flex justify-center">   
         <form method="post" action="{{route('book.store')}}">
             @csrf
             @method('post')
     
-            <div>
+            <div class="pt-2 pb-3">
                 <div>
                     <label for="title" class="form-label">Title: </label>
                     <input type="text" name="title" class="form-control" id="title">  
                 </div>
             </div>
     
-            <div>
+            <div class="pt-2 pb-3">
                 <div>
                     <label for="author" class="form-label">Author: </label>
                     <input type="text" name="author" class="form-control" id="author">  
                 </div>
             </div>
     
-            <div>
-                <div class="col-md-6">
+            <div class="pt-2 pb-3">
+                <div>
                     <label for="published_date" class="form-label">Published Date: </label>
                     <input type="date" name="published_date" class="form-control" id="published_date">    
                 </div>
             </div>
     
-            <div class="row mb-3">
-                <div class="col-md-6">
+            <div class="pt-2 pb-3">
+                <div>
                     <label for="genre" class="form-label">Genre: </label>
                     <select id="genre" name="genre" class="form-select" required>
                         <option value="blank"></option>
@@ -75,11 +75,22 @@
                 </div>
             </div>
         -->
-            <div>
-                <button type="submit" class="btn btn-primary">
-                    {{ __('Add Book') }}
-                </button>
+            <div class="pt-2 pb-2">
+                <div class="flex rounded-lg justify-center border-4 border-blue-500">
+                    <button type="submit" class="btn btn-primary">
+                        {{ __('Add Book') }}
+                    </button>
+                </div>
             </div>
+
+            <div class="pt-2">
+                <div class="flex rounded-lg justify-center border-4 border-black">
+                    <a href="{{ route('admin.dashboard') }}" class="btn btn-primary">
+                        {{ __('Go back to dashboard') }}
+                    </a>
+                </div>
+            </div>
+            
         </form>
     </div>
     
